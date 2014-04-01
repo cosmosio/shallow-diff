@@ -2,7 +2,7 @@ Shallow diff
 =============
 
 Make a shallow diff between two objects/arrays to get what has been updated/deleted/added or remains unchanged.
-It will not traverse the whole structure and stop at the first level.
+It will not traverse the whole structure, only the top level items/property.
 
 Installation
 ============
