@@ -17,7 +17,7 @@ How to use
 Require shallow-diff:
 
 ```bash
-var diff = require("shallow-dif");
+var diff = require("shallow-diff");
 ```
 
 Get the diff between two objects:
