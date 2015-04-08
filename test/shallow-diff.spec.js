@@ -34,6 +34,12 @@ describe("shallow-diff", function () {
 		expect(Array.isArray(result.deleted)).to.be.true;
 	});
 
+        it("should should handle `undefined` values", function() {
+          var result = sut({a: undefined}, {a: undefined});
+          expect(result.added.length).to.equal(0);
+          expect(result.deleted.length).to.equal(0);
+        });
+
 	describe("with an array", function () {
 		var initialArray = ["a", "b", "c", "d"],
 			finalArray = ["a", "d", "e"];
