@@ -54,7 +54,7 @@ module.exports = function shallowDiff(base, compared) {
    loop(compared, function (value, idx) {
 
        // To get the added
-       if (typeof base[idx] == "undefined") {
+     if (!(idx in base)) {
            added.push(idx);
 
        // The updated
@@ -72,7 +72,7 @@ module.exports = function shallowDiff(base, compared) {
    loop(base, function (value, idx) {
 
       // To get the deleted
-      if (typeof compared[idx] == "undefined") {
+      if (!(idx in compared)) {
           deleted.push(idx);
       }
    });
