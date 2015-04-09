@@ -57,7 +57,7 @@ CHANGELOG
 
 ### 0.0.3 - 8 APR 2015
 
-* Fix a bug where undefined values would appear in the diff as added and deleted. [See #1](https://github.com/cosmosio/shallow-diff/pull/1). Thanks to [@sverrejoh](https://github.com/cosmosio/shallow-diff/pulls/sverrejoh)
+* Fix a bug where undefined values would appear in the diff as added and deleted. [See #1](https://github.com/cosmosio/shallow-diff/pull/1). Thanks to [@sverrejoh](https://github.com/sverrejoh)
 
 LICENSE
 =======
