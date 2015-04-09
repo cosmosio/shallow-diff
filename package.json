@@ -1,7 +1,7 @@
 {
   "name": "shallow-diff",
   "description": "compare two objects or arrays and return the diff (add/updated/removed/unchanged)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/cosmosio/shallow-diff",
   "licenses": [
     {
@@ -32,8 +32,8 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "chai": "~1.9.1",
-    "mocha": "~1.18.2"
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
   },
   "dependencies": {
     "simple-loop": "0.0.2"
