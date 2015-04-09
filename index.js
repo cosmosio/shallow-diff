@@ -1,14 +1,14 @@
 /**
-* @license shallow-diff https://github.com/cosmosio/shallow-diff
-*
-* The MIT License (MIT)
-*
-* Copyright (c) 2014 Olivier Scherrer <pode.fr@gmail.com>
-*/
+ * @license shallow-diff https://github.com/cosmosio/shallow-diff
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014-2015 Olivier Scherrer <pode.fr@gmail.com>
+ */
 "use strict";
 
 var assert = require("assert"),
-  loop = require("simple-loop");
+    loop = require("simple-loop");
 
 /**
  * Make a diff between two objects
@@ -42,45 +42,42 @@ var assert = require("assert"),
  * @returns object
  */
 module.exports = function shallowDiff(base, compared) {
-  assert(typeof base == "object", "the first object to compare with shallowDiff needs to be an object");
-  assert(typeof compared == "object", "the second object to compare with shallowDiff needs to be an object");
+    assert(typeof base == "object", "the first object to compare with shallowDiff needs to be an object");
+    assert(typeof compared == "object", "the second object to compare with shallowDiff needs to be an object");
 
-  var unchanged = [],
-      updated = [],
-      deleted = [],
-      added = [];
+    var unchanged = [],
+        updated = [],
+        deleted = [],
+        added = [];
 
-   // Loop through the compared object
-   loop(compared, function (value, idx) {
+    // Loop through the compared object
+    loop(compared, function(value, idx) {
+        // To get the added items
+        if (!(idx in base)) {
+            added.push(idx);
 
-       // To get the added
-     if (!(idx in base)) {
-           added.push(idx);
+        // The updated items
+        } else if (value !== base[idx]) {
+            updated.push(idx);
 
-       // The updated
-     } else if (value !== base[idx]) {
-           updated.push(idx);
+        // And the unchanged
+        } else if (value === base[idx]) {
+            unchanged.push(idx);
+        }
+    });
 
-       // And the unchanged
-     } else if (value === base[idx]) {
-           unchanged.push(idx);
-       }
+    // Loop through the before object
+    loop(base, function(value, idx) {
+        // To get the deleted items
+        if (!(idx in compared)) {
+            deleted.push(idx);
+        }
+    });
 
-   });
-
-   // Loop through the before object
-   loop(base, function (value, idx) {
-
-      // To get the deleted
-      if (!(idx in compared)) {
-          deleted.push(idx);
-      }
-   });
-
-  return {
-      updated: updated,
-      unchanged: unchanged,
-      added: added,
-      deleted: deleted
-  };
+    return {
+        updated: updated,
+        unchanged: unchanged,
+        added: added,
+        deleted: deleted
+    };
 };
