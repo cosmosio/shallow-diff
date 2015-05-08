@@ -7,6 +7,12 @@
  */
 "use strict";
 
+function assert(assertion, error) {
+    if (assertion) {
+        throw new TypeError("simple-loop: " + error);
+    }
+}
+
 var loop = require("simple-loop");
 
 /**
@@ -41,12 +47,8 @@ var loop = require("simple-loop");
  * @returns object
  */
 module.exports = function shallowDiff(base, compared) {
-    if (typeof base != "object") throw new TypeError("shallow-diff: " +
-      "the first object to compare with shallowDiff needs to be an object"
-    );
-    if (typeof compared != "object") throw new TypeError("shallow-diff: " +
-      "the second object to compare with shallowDiff needs to be an object"
-    );
+    assert(typeof base != "object", "the first object to compare with shallowDiff needs to be an object");
+    assert(typeof compared != "object", "the second object to compare with shallowDiff needs to be an object");
 
     var unchanged = [],
         updated = [],
