@@ -55,6 +55,10 @@ diff(base, compared);
 CHANGELOG
 =========
 
+## 0.0.4 - 7 MAY 2015
+
+* Remove dependency on assert and replace with own function. Saves 17kb in the end after browserfication. Thanks to [@tomekwi](https://github.com/tomekwi).
+
 ### 0.0.3 - 8 APR 2015
 
 * Fix a bug where undefined values would appear in the diff as added and deleted. [See #1](https://github.com/cosmosio/shallow-diff/pull/1). Thanks to [@sverrejoh](https://github.com/sverrejoh)
