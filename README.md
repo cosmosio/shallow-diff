@@ -55,6 +55,10 @@ diff(base, compared);
 CHANGELOG
 =========
 
+## 0.0.5 - 9 JUN 2015
+
+* Also update to simple loop 0.0.4 to remove its dependency on assert. Thanks to [@markdalgleish](https://twitter.com/markdalgleish).
+
 ## 0.0.4 - 7 MAY 2015
 
 * Remove dependency on assert and replace with own function. Saves 17kb in the end after browserfication. Thanks to [@tomekwi](https://github.com/tomekwi).

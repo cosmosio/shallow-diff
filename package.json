@@ -1,7 +1,7 @@
 {
   "name": "shallow-diff",
   "description": "compare two objects or arrays and return the diff (add/updated/removed/unchanged)",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/cosmosio/shallow-diff",
   "licenses": [
     {
