@@ -50,13 +50,13 @@ module.exports = function shallowDiff(base, compared) {
     assert(typeof base != "object", "the first object to compare with shallowDiff needs to be an object");
     assert(typeof compared != "object", "the second object to compare with shallowDiff needs to be an object");
 
-    var unchanged = [],
-        updated = [],
-        deleted = [],
-        added = [];
+    var unchanged = [];
+    var updated = [];
+    var deleted = [];
+    var added = [];
 
     // Loop through the compared object
-    loop(compared, function(value, idx) {
+    loop(compared, (value, idx) => {
         // To get the added items
         if (!(idx in base)) {
             added.push(idx);
@@ -72,7 +72,7 @@ module.exports = function shallowDiff(base, compared) {
     });
 
     // Loop through the before object
-    loop(base, function(value, idx) {
+    loop(base, (value, idx) => {
         // To get the deleted items
         if (!(idx in compared)) {
             deleted.push(idx);
@@ -80,9 +80,9 @@ module.exports = function shallowDiff(base, compared) {
     });
 
     return {
-        updated: updated,
-        unchanged: unchanged,
-        added: added,
-        deleted: deleted
+        updated,
+        unchanged,
+        added,
+        deleted
     };
 };
