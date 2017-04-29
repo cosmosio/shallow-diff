@@ -7,31 +7,31 @@
  */
 var sut = require("../index");
 
-var chai = require("chai"),
-    expect = chai.expect;
+var chai = require("chai");
+var expect = chai.expect;
 
-describe("shallow-diff", function() {
+describe("shallow-diff", () => {
 
-    it("should be a function", function() {
+    it("should be a function", () => {
         expect(typeof sut).to.equal("function");
     });
 
-    it("should throw an error if base or compared isn't an object or array", function() {
-        expect(function() {
+    it("should throw an error if base or compared isn't an object or array", () => {
+        expect(() => {
             sut("");
         }).to.throw();
-        expect(function() {
+        expect(() => {
             sut("", {});
         }).to.throw();
-        expect(function() {
+        expect(() => {
             sut({}, "");
         }).to.throw();
-        expect(function() {
+        expect(() => {
             sut({}, []);
         }).not.to.throw();
     });
 
-    it("should return an object with changed/deleted/unchanged/added info", function() {
+    it("should return an object with changed/deleted/unchanged/added info", () => {
         var result = sut({}, {});
         expect(result).to.eql({
             updated: [],
@@ -41,11 +41,11 @@ describe("shallow-diff", function() {
         });
     });
 
-    describe("with an array", function() {
-        var initialArray = ["a", "b", "c", "d"],
-            finalArray = ["a", "d", "e"];
+    describe("with an array", () => {
+        var initialArray = ["a", "b", "c", "d"];
+        var finalArray = ["a", "d", "e"];
 
-        it("should return items that have changed or have been deleted", function() {
+        it("should return items that have changed or have been deleted", () => {
             var result = sut(initialArray, finalArray);
             expect(result).to.eql({
                 unchanged: [0],
@@ -55,7 +55,7 @@ describe("shallow-diff", function() {
             });
         });
 
-        it("shouldn't have the same result if arrays are swapped", function() {
+        it("shouldn't have the same result if arrays are swapped", () => {
             var result = sut(finalArray, initialArray);
             expect(result.added.length).to.equal(1);
             expect(result.added[0]).to.equal(3);
@@ -67,7 +67,7 @@ describe("shallow-diff", function() {
             });
         });
 
-        it("should should handle `undefined` values", function() {
+        it("should should handle `undefined` values", () => {
             var result = sut(
                 [undefined],
                 [undefined]
@@ -81,19 +81,20 @@ describe("shallow-diff", function() {
         });
     });
 
-    describe("with an object", function() {
+    describe("with an object", () => {
         var initialObject = {
                 a: 10,
                 b: 20,
                 c: 30
-            },
-            finalObject = {
-                a: 10,
-                c: 40,
-                d: 50
             };
 
-        it("should return items that have changed or have been deleted", function() {
+        var finalObject = {
+            a: 10,
+            c: 40,
+            d: 50
+        };
+
+        it("should return items that have changed or have been deleted", () => {
             var result = sut(initialObject, finalObject);
             expect(result).to.eql({
                 updated: ["c"],
@@ -103,7 +104,7 @@ describe("shallow-diff", function() {
             });
         });
 
-        it("should should handle `undefined` values", function() {
+        it("should should handle `undefined` values", () => {
             var result = sut({
                 a: undefined
             }, {
